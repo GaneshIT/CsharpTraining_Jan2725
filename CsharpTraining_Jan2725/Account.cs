@@ -28,7 +28,7 @@ namespace CsharpTraining_Jan2725
     {
         void CreateTransacttoin();
     }
-    public class Transactions : ITransactions
+    public class Transactions : Account,ITransactions
     {
         public void CreateATMs()
         {
@@ -44,6 +44,11 @@ namespace CsharpTraining_Jan2725
         {
             throw new NotImplementedException();
         }
+
+        public override void LoanTypes()
+        {
+            throw new NotImplementedException();
+        }
     }
     public class IDBIBank:IBank
     {
@@ -56,13 +61,16 @@ namespace CsharpTraining_Jan2725
 
         }
     }
-    
     public abstract class Account
     {
         public int AccountId { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
         public string AccType { get; set; }
+        public void ShowBrances()
+        {
+            Console.WriteLine("Branch Lis");
+        }
         public virtual void AccountTypes()
         {
             string[] types = { "Saving", "Current", "Corporate" };
@@ -80,18 +88,22 @@ namespace CsharpTraining_Jan2725
     }
     public class SBI : Account
     {
+        public new void ShowBrances()
+        {   
+            Console.WriteLine("Branch Lis");
+        }
         public override void LoanTypes()
         {
             Console.WriteLine("Housing Loans");
         }
-        public override void AccountTypes()
-        {
-            string[] types = { "Saving", "Current" };
-            foreach (string type in types)
-            {
-                Console.WriteLine(type);//saving current Corporate
-            }
-        }
+        //public override void AccountTypes()
+        //{
+        //    string[] types = { "Saving", "Current" };
+        //    foreach (string type in types)
+        //    {
+        //        Console.WriteLine(type);//saving current Corporate
+        //    }
+        //}
         public void CreateAccount()
         {
 
@@ -116,7 +128,7 @@ namespace CsharpTraining_Jan2725
             }
         }
     }
-    public class ICICI : Account
+    public class ICICI : HDFC
     {
         public override void LoanTypes()
         {
@@ -133,6 +145,36 @@ namespace CsharpTraining_Jan2725
             {
                 Console.WriteLine(type);//saving current Corporate
             }
+        }
+    }
+
+    //abstract, sealed & Static
+    public sealed class MyHistory
+    {
+        public void CreteaHistory()
+        {
+            MyTransactions.T();
+            MyTransactions.T1();
+        }
+    }
+    public static class MyTransactions
+    {
+        public static void T()
+        {
+
+        }
+        public static void T1()
+        {
+
+        }
+    }
+
+    public class MyLoans
+    {
+        public void DisplayLoans(Account account)
+        {
+            account.LoanTypes();
+            account.ShowBrances();
         }
     }
 }

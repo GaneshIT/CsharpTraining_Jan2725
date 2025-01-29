@@ -1,7 +1,65 @@
 ﻿using CsharpTraining_Jan2725;
 using System.Text;
 
+public class Program {
+    public static int x = 10;
+    public int y = 10;
+    public Program() //non-static constructor
+    {
+        x = x + 10;
+        y=y + 10;
+        Console.WriteLine("My Program loading");
+    }
+    public void GetValue() //non-static constructor
+    {
+        x = x + 10;
+        y = y + 10;
+        Program p = new Program();
+        Console.WriteLine(x);
+        Console.WriteLine(y);
+        Console.WriteLine("GetValue");
+    }
+    static Program() //static constructor
+    {
+        x =x+ 20;
+        Console.WriteLine("My static Program loading");
+    }
+    
+    public static void Main(string[] args)
+    {
+        MyLog myLog = MyLog.GetLogInstance();
+        myLog.Check();//First time calling
 
+        myLog = MyLog.GetLogInstance();
+        myLog.Check();//2nd time calling
+        //Program p = new Program();
+        //p.GetValue();
+        //Console.WriteLine(x);
+        //int y = x;
+    }
+}
+/*
+Report report = new Report(101,"Excel",500,DateTime.Now);
+report.ReportData();
+
+
+
+SBI sBIobj1 = new SBI(); // SBI and Account
+sBIobj1.LoanTypes();
+sBIobj1.ShowBrances(); //parent class method will be hide because of new keyword
+
+Account accountObj1=new SBI(); //SOLID principles   Account and SBI
+//accountObj.LoanTypes();
+accountObj1.ShowBrances();//
+
+Account accountObj2 = new HDFC();
+
+MyLoans myLoans = new MyLoans();
+string acc = "SBI";
+if(acc=="SBI")
+myLoans.DisplayLoans(accountObj1);
+else
+myLoans.DisplayLoans(accountObj2);
 //Account obj= new Account();
 //obj.Name = "Raj";   //set()
 //obj.AccountId = 123;
@@ -19,8 +77,9 @@ hDFC.AccountTypes();
 ICICI iCICI=new ICICI();//instance created 
 iCICI.AccountTypes();//non-static
 ICICI.GetLoans();//static
+*/
 
-Console.WriteLine(obj.Name);//get()
+//Console.WriteLine(obj.Name);//get()
 
 //Account accountObj=new Account();
 //accountObj.AccountTypes();
