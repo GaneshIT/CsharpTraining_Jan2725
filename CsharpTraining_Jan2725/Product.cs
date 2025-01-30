@@ -14,7 +14,6 @@ namespace CsharpTraining_Jan2725
         public string Description { get; set; }
         public string Category { get; set; }
         private string ProductSerialNumber { get; set; }
-
         public void CreateProduct()
         {
             Name = "Mouse";

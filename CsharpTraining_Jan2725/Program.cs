@@ -2,7 +2,7 @@
 using System.Text;
 
 public class Program {
-    public static int x = 10;
+    /*public static int x = 10;
     public int y = 10;
     public Program() //non-static constructor
     {
@@ -24,14 +24,27 @@ public class Program {
         x =x+ 20;
         Console.WriteLine("My static Program loading");
     }
-    
+    */
     public static void Main(string[] args)
     {
-        MyLog myLog = MyLog.GetLogInstance();
-        myLog.Check();//First time calling
+        Employee employee = new Employee();
+        employee.CreateDept();
+        //employee.CreateEmployee("IT");
+        //employee.CreateEmployee(2);
+        //employee.CreateEmployee<int>(10);
+        //employee.CreateEmployee<string>("IT");
+        //employee.CreateEmployee<bool>(false);
 
-        myLog = MyLog.GetLogInstance();
-        myLog.Check();//2nd time calling
+        //employee.Create(10);
+        //employee.Create("10");
+        //int value=0;//M001
+        //employee.GetEmployeeGrade(ref value);//M001
+        //Console.WriteLine(value);//M001
+        //MyLog myLog = MyLog.GetLogInstance();
+        //myLog.Check();//First time calling
+
+        //myLog = MyLog.GetLogInstance();
+        //myLog.Check();//2nd time calling
         //Program p = new Program();
         //p.GetValue();
         //Console.WriteLine(x);
