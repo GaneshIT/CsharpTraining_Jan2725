@@ -38,7 +38,40 @@ namespace CsharpTraining_Jan2725
         {
             Console.WriteLine(input);
         }
-
+        public string GetS()
+        {
+            return "";
+        }
+        public int GetI()
+        {
+            return 1;
+        }
+        public string[] GetStrs()
+        {
+            string[] strings = new string[1];
+            return strings;
+        }
+        public Dictionary<int,string> GetD()
+        {
+            Dictionary<int, string> movieDict = new Dictionary<int, string>();
+            Dictionary<int, string> resultDict = new Dictionary<int, string>();
+            movieDict.Add(101, "ABC");
+            movieDict.Add(102, "CCA");
+            movieDict.Add(103, "BAC");
+            movieDict.Add(104, "CAB"); //C
+            movieDict.Add(105, "CBA");
+            Console.WriteLine(movieDict[104]);//A4
+            foreach (var item in movieDict)
+            {
+                if (item.Value.StartsWith("C"))
+                {
+                    resultDict.Add(item.Key, item.Value);
+                }
+                Console.WriteLine(item.Key);
+                Console.WriteLine(item.Value);
+            }
+            return resultDict;
+        }
         public void CreateDept()
         {
             #region arraylist
@@ -153,20 +186,78 @@ namespace CsharpTraining_Jan2725
 
             #region dictionary
             Dictionary<int,string> movieDict = new Dictionary<int,string>();
-            movieDict.Add(101, "A1");
-            movieDict.Add(102, "A2");
-            movieDict.Add(103, "A3");
-            movieDict.Add(104, "A4");
-            movieDict.Add(105, "A5");
+            Dictionary<int, string> resultDict = new Dictionary<int, string>();
+            movieDict.Add(101, "ABC");
+            movieDict.Add(102, "CCA");
+            movieDict.Add(103, "BAC");
+            movieDict.Add(104, "CAB"); //C
+            movieDict.Add(105, "CBA");
             Console.WriteLine(movieDict[104]);//A4
             foreach (var item in movieDict)
             {
+                if (item.Value.StartsWith("C")) 
+                {
+                    resultDict.Add(item.Key, item.Value);
+                }
                 Console.WriteLine(item.Key);
                 Console.WriteLine(item.Value);
             }
+            //return resultDict
             #endregion
         }
 
+    }
+
+    public class ExceptionHandling
+    {
+        public static void FileProcess()
+        {
+            try
+            {
+
+            }
+            
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+            }
+
+
+
+            try
+            {
+            Console.WriteLine($"Enter value");
+            int a = Convert.ToInt32(Console.ReadLine());//2bc
+                int[] arr = { 3, 3 };
+                Console.WriteLine(arr[0]);
+            File.Open("xxx.txt",FileMode.Open);
+
+            }
+            catch(FormatException ex)
+            {
+                Console.WriteLine($"Enter number only");
+
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine($"Size exceeded");
+
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"File is not available");
+                //Console.WriteLine("message:"+ex.Message+"Source:"+ex.Source);
+
+            }
+            catch (Exception ex)
+            {
+                //ex.
+                Console.WriteLine("Invalid input");
+            }
+        }
     }
 }
 

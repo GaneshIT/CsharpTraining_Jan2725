@@ -1,4 +1,5 @@
 ﻿using CsharpTraining_Jan2725;
+using System.Collections;
 using System.Text;
 
 public class Program {
@@ -27,8 +28,44 @@ public class Program {
     */
     public static void Main(string[] args)
     {
+        Transaction transaction = new Transaction(1, "Redbus", "travel", "Debit");
+        transaction.ReadTransaction();
+        //ExceptionHandling.FileProcess();
+        /*
+        int[] values = { 4, 3, 6, 7, 1, 2, 3, 4 };
+
+        var r = values.Distinct();
+        foreach (var item in r)
+        {
+            Console.WriteLine(item);
+        }
+
+        Array.Sort(values);//1 2 3 4 6 7
+
+        //int[] result= new int[values.Length];
+        /*
+        ArrayList arrayList = new ArrayList();
+        foreach (var item in values)
+        {
+            if(arrayList.Count>0)
+                if(!arrayList.Contains(item))
+                    arrayList.Add(item);//3 6 7 1 2 
+            else
+                    arrayList.Add(item);//4
+        } */
+        /*
+        HashSet<int> set = new HashSet<int>();
+        foreach (int value in values) 
+        {
+            set.Add(value); //4 3 6 7 1 2 
+        }
+        foreach (int value in set)
+        {
+            Console.WriteLine(value);//4 3 6 7 1 2
+        }
         Employee employee = new Employee();
         employee.CreateDept();
+        */
         //employee.CreateEmployee("IT");
         //employee.CreateEmployee(2);
         //employee.CreateEmployee<int>(10);
