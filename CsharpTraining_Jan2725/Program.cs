@@ -1,8 +1,10 @@
 ﻿using CsharpTraining_Jan2725;
 using System.Collections;
+using System.Runtime.InteropServices;
 using System.Text;
 
-public class Program {
+public class Program
+{
     /*public static int x = 10;
     public int y = 10;
     public Program() //non-static constructor
@@ -28,8 +30,106 @@ public class Program {
     */
     public static void Main(string[] args)
     {
-        Transaction transaction = new Transaction(1, "Redbus", "travel", "Debit");
-        transaction.ReadTransaction();
+        Calc calc = null;
+        int num1 = Convert.ToInt32(Console.ReadLine());
+        int num2 = Convert.ToInt32(Console.ReadLine());
+        string select=Console.ReadLine();//add, sub, mul
+        switch (select)
+        {
+            case "add":
+                calc = new Calc(ArithmaticPbm.Add);
+                break;
+            case "sub":
+                calc = new Calc(ArithmaticPbm.Sub);
+                break;
+            case "mul":
+                calc = new Calc(ArithmaticPbm.Mul);
+                break;
+            default:
+                throw new Exception("Invalid Operation");
+        }
+
+        int resulVal = ArithmaticPbm.Performoperation(num1, num2, calc);
+        Console.WriteLine(resulVal);
+
+        DelegatesDemo obj = new DelegatesDemo();
+        //obj();
+        obj.Get();
+        obj.GetReport();
+        obj.GetExcelReport();//function calling
+
+        string type = "Admin";
+        GetReport d = new GetReport(obj.GetExcelReport);//passing function name as a arugment with delegate
+        d += new GetReport(obj.Get);
+        if (type == "Admin")
+            d += new GetReport(obj.GetReport);
+        else
+            d -= new GetReport(obj.GetReport);
+        d += new GetReport(obj.GetWordReport);
+
+        MyDeleateResult result = new MyDeleateResult();
+        result.Access(d);
+        d();// caling delegate>obj.GetExcelReport, obj.Get, obj.GetReport
+            // string myname = "Ganesh";
+            //string name= myname.GetName();//Welcome,Ganesh
+            // int myValue = 25;
+            // //int res=myValue.GetInterest();//25
+
+        // int res = Interest.GetInterest(2);
+
+        // Library library = new Library();
+        // bool exit = false;
+
+        // while (!exit)
+        // {
+        //     // Display menu options to the user
+        //     Console.WriteLine("Choose an option:");
+        //     Console.WriteLine("1. Add Book");
+        //     Console.WriteLine("2. Remove Book");
+        //     Console.WriteLine("3. List Books");
+        //     Console.WriteLine("4. Exit");
+
+        //     // Get user input for the chosen option
+        //     int choice = Convert.ToInt32(Console.ReadLine());
+
+        //     switch (choice)
+        //     {
+        //         case 1:
+        //             // Prompt for book details and add book
+        //             Console.WriteLine("Enter book title:");
+        //             string title = Console.ReadLine();
+        //             Console.WriteLine("Enter book author:");
+        //             string author = Console.ReadLine();
+        //             Console.WriteLine("Enter book ISBN:");
+        //             string isbn = Console.ReadLine();
+
+        //             Book newBook = new Book(title, author, isbn);
+        //             library.AddBook(newBook);
+        //             break;
+
+        //         case 2:
+        //             // Prompt for ISBN and remove book
+        //             Console.WriteLine("Enter ISBN of the book to remove:");
+        //             string isbnToRemove = Console.ReadLine();
+        //             library.RemoveBook(isbnToRemove);
+        //             break;
+
+        //         case 3:
+        //             // List all books
+        //             library.ListBooks();
+        //             break;
+
+        //         case 4:
+        //             exit = true;
+        //             break;
+
+        //         default:
+        //             Console.WriteLine("Invalid choice. Please try again.");
+        //             break;
+        //     }
+        // }
+        //Transaction transaction = new Transaction(1, "Redbus", "travel", "Debit");
+        //transaction.ReadTransaction();
         //ExceptionHandling.FileProcess();
         /*
         int[] values = { 4, 3, 6, 7, 1, 2, 3, 4 };
